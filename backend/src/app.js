@@ -3,8 +3,8 @@ dotenv.config({ path: '../../.env' })
 import express from 'express'
 import mongoose from 'mongoose';
 import cors from 'cors'
-import userRoutes from './routes/users.js';
-import authRoutes from './routes/auth.js';
+import userRoutes from './routes/Users.js';
+import authRoutes from './routes/Auth.js';
 
 const app = express();
 
