@@ -2,14 +2,16 @@ import dotenv from 'dotenv'
 dotenv.config({ path: '../../.env' })
 import express from 'express'
 import mongoose from 'mongoose';
-// import routes from './routes'
 import cors from 'cors'
+import userRoutes from './routes/users.js';
+import authRoutes from './routes/auth.js';
 
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -18,8 +20,7 @@ mongoose.connect(process.env.MONGO_URI, {
     .catch((err) => console.error('MongoDB connection error:', err));
 
 // Routes
-app.use('/', (req, res) =>{
-    res.send('123123123')
-});
+app.use('/api/users', userRoutes)
+app.use('/api/auth', authRoutes)
 
 export default app;
