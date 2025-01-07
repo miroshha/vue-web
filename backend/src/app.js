@@ -1,8 +1,9 @@
-import dotenv from 'dotenv'
-dotenv.config({ path: '../../.env' })
-import express from 'express'
-import mongoose from 'mongoose';
-import cors from 'cors'
+import dotenv from 'dotenv';
+dotenv.config(); // .env читается на верхнем уровне
+
+import express from 'express';
+import cors from 'cors';
+import connectDb from './controllers/db.js';
 import userRoutes from './routes/Users.js';
 import authRoutes from './routes/Auth.js';
 
@@ -13,14 +14,10 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(() => console.log('Connected to MongoDB'))
-    .catch((err) => console.error('MongoDB connection error:', err));
+connectDb();
 
 // Routes
-app.use('/api/users', userRoutes)
-app.use('/api/auth', authRoutes)
+app.use('/api/users', userRoutes);
+app.use('/api/auth', authRoutes);
 
 export default app;

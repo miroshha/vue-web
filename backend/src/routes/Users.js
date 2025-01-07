@@ -1,5 +1,5 @@
 import express from 'express';
-import User from '../models/User.js';
+import User from '../models/user/User.js';
 import bcrypt from 'bcryptjs';
 import getUser from '../middlewares/getUser.js'
 import LoginMiddleware from '../middlewares/Login.js'
@@ -21,13 +21,13 @@ router.get('/', authentication, async (req, res) => {
 router.post('/', authentication, async (req, res) => {
     const { name, email, password } = req.body;
     try {
-        const users = await User.findOne({ email: email });
-        if (users) {
+        const user = await User.findOne({ email: email });
+        if (user) {
             return res.status(400).json({ message: 'User already exists' });
         }
         const hashedPassword = await bcrypt.hash(password, 10);
-        const user = new User({ name, email, password: hashedPassword });
-        const newUser = await user.save();
+        const newUser = new User({ name, email, password: hashedPassword });
+        await newUser.save();
         res.status(201).json(newUser);
     } catch (err) {
         res.status(400).json({ message: err.message });
