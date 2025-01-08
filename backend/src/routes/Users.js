@@ -8,7 +8,7 @@ import authentication from '../middlewares/Authentication.js'
 const router = express.Router();
 
 // Get all users
-router.get('/', authentication, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const users = await User.find();
         res.json(users);
@@ -18,7 +18,7 @@ router.get('/', authentication, async (req, res) => {
 });
 
 // Create new user
-router.post('/', authentication, async (req, res) => {
+router.post('/', async (req, res) => {
     const { name, email, password } = req.body;
     try {
         const user = await User.findOne({ email: email });
@@ -35,12 +35,12 @@ router.post('/', authentication, async (req, res) => {
 });
 
 // Get user by id
-router.get('/:id', authentication, getUser, LoginMiddleware, (req, res) => {
+router.get('/:id', getUser, LoginMiddleware, (req, res) => {
     res.json(res.user);
 });
 
 // Update user
-router.patch('/:id', authentication, getUser, LoginMiddleware, async (req, res) => {
+router.patch('/:id', getUser, LoginMiddleware, async (req, res) => {
     const { name, email, password } = req.body;
     if (name != null) res.user.name = name;
     if (email != null) res.user.email = email;
@@ -54,7 +54,7 @@ router.patch('/:id', authentication, getUser, LoginMiddleware, async (req, res) 
 });
 
 // Delete user by id
-router.delete('/:id', authentication, getUser, LoginMiddleware, async (req, res) => {
+router.delete('/:id', getUser, LoginMiddleware, async (req, res) => {
     try {
         await User.deleteOne({ _id: res.user._id });
         res.json({ message: 'User deleted' });
