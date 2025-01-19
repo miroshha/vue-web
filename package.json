@@ -5,7 +5,7 @@
   "scripts": {
     "start": "concurrently \"npm run backend\" \"npm run frontend\"",
     "backend": "cd backend/src && nodemon server.js",
-    "frontend": "cd frontend && npm run dev"
+    "frontend": "cd frontend && npm start"
   },
   "keywords": [],
   "author": "",

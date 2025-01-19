@@ -1,0 +1,38 @@
+* {
+    font-family: "Clash Grotesk Variable", sans-serif;
+}
+
+body {
+    background-color: #FCE6E9;
+}
+
+.navbar-container {
+    text-align: center;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-links a {
+    color: #494949;
+    text-decoration: none;
+    margin-right: 25px;
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 60px;
+}
+
+.navbar-links a i {
+    margin-right: 10px;
+}
+
+.navbar-buttons button {
+    color: #494949;
+    background-color: white;
+    border: 0;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 10px 15px;
+    margin-right: 25px;
+    border-radius: 60px;
+}

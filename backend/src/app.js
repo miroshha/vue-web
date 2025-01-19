@@ -11,6 +11,8 @@ import provider from './routes/Provider.js';
 import service from './routes/Service.js';
 import booking from './routes/Booking.js'
 import review from './routes/Review.js'
+import team from './routes/Team.js'
+import schedule from './routes/Schedule.js'
 import authentication from "./middlewares/Authentication.js";
 
 const app = express();
@@ -32,5 +34,7 @@ app.use('/api/provider', provider);
 app.use('/api/service', service);
 app.use('/api/booking', booking);
 app.use('/api/review', review);
+app.use('/api/team', team);
+app.use('/api/schedule', schedule);
 
 export default app;

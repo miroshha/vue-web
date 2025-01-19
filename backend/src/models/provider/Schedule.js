@@ -12,12 +12,12 @@ const ScheduleSchema = new mongoose.Schema({
         required: true,
     },
     date: {
-        type: Date,
+        type: String,
         required: true,
     },
     times: [
         {
-            time: { type: String, required: true }, // ex. 14:00
+            time: { type: Date, required: true },
             isBooked: { type: Boolean, default: false },
             bookedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // If booked
         },
