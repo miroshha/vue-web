@@ -1,16 +1,9 @@
-* {
-    font-family: "Clash Grotesk Variable", sans-serif;
-}
-
-body {
-    background-color: #FCE6E9;
-}
-
 .navbar-container {
     text-align: center;
     font-size: 24px;
     display: flex;
     align-items: center;
+    margin: 20px 0 0 20px;
 }
 
 .navbar-links a {

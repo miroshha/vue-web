@@ -1,15 +1,18 @@
 import React from 'react';
-import '../assets/styles/HomePage.css'; // For styling
+import '../assets/styles/HomePage.css';
+import '../assets/styles/Main.css'
 import Navbar from '../components/Navbar.js';
+import Footer from '../components/Footer.js';
 
 const HomePage = () => {
     return (
-        <div className="homepage-container">
+        <div className="container">
             <Navbar />
-            <div className="homepage-content">
-                <h1>Welcome to our website!</h1>
-                <p>Our website is under construction. Please check back later.</p>
+            <div className="homepage-image">
+                <img src="https://i.imgur.com/yRV7OEq.png" alt="main fiore"/>
+                <h1 className="image-text image-text-l">Fiore®</h1>
             </div>
+            <Footer />
         </div>
     );
 };

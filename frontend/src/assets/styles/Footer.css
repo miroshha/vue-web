@@ -1,0 +1,27 @@
+.footer-container {
+    background-color: #f5dfe1;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+
+.footer-container p {
+    color: #B24C61;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.footer-container a {
+    color: #494949;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.footer-container li {
+    margin-bottom: 10px;
+}

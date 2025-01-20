@@ -1,3 +1,29 @@
-.homepage-container {
-    padding: 20px;
+/*.container {*/
+/*    position: relative;*/
+/*    min-height: 100vh;*/
+/*}*/
+
+.homepage-image img {
+    width: 40%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 0 0 100px;
+    place-items: center;
+}
+
+.image-text-l {
+    font-size: 300px;
+    font-weight: 550;
+    color: #fad1de;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    right: -11%;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: center;
+    white-space: nowrap;
+    overflow-y: hidden;
 }
