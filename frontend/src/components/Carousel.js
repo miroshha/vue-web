@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import "../assets/styles/Carousel.css"; // Подключаем стиль для карусели (если есть)
 
 const Carousel = () => {
-    const [cards, setCards] = useState([]); // Для хранения данных карточек
+    const [cards, setCards] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [width, setWidth] = useState(0);
     const [index, setIndex] = useState(0);
 
@@ -14,9 +15,8 @@ const Carousel = () => {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer 123123`
                     }
-                });  // Замените на ваш API
+                });
                 const data = await response.json();
-                console.log(data);
                 setCards(data);  // Сохраняем полученные данные в состояние
             } catch (error) {
                 console.error('Ошибка при загрузке данных:', error);
@@ -24,6 +24,29 @@ const Carousel = () => {
         };
 
         fetchCards();
+    }, []);
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const response = await fetch('http://localhost:3001/api/category', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer 123123`
+                    }
+                });
+                const data = await response.json();
+                const transformedCategories = data.map((item) => ({
+                    id: item._id,
+                    name: item.name,
+                }));
+                setCategories(transformedCategories);
+            } catch (error) {
+                console.error('Ошибка при загрузке данных:', error);
+            }
+        };
+
+        fetchCategories();
     }, []);
 
     useEffect(() => {
@@ -92,7 +115,16 @@ const Carousel = () => {
                                     <img src={card.image} alt="provider image"/>
                                 </div>
                                 <div className="card-content">
-                                    <h3 className="card-title">{card.name}</h3>
+                                    <div className="card-header">
+                                        <h3 className="card-title">{card.name}</h3>
+                                        {
+                                            categories.map((category) => {
+                                                if (category.id === card.category) {
+                                                    return <span key={category.id} className="category">{category.name}</span>;
+                                                }
+                                            })
+                                        }
+                                    </div>
                                     <p className="card-description">{card.description}</p>
                                     <div className="card-rating">
                                         <span className="rating">{card.rating}</span>

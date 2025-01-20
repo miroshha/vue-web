@@ -138,3 +138,19 @@ img {
     height: 60vh;
     width: 100%;
 }
+
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.card-header span {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 7px;
+    border-radius: 60px;
+    color: var(--provider-name);
+    border: 1px solid var(--provider-name);
+}

@@ -1,5 +1,26 @@
+:root {
+    --login-bg: linear-gradient(9deg, rgba(247,205,211,1) 0%, rgba(245,223,225,1) 100%);
+    --login-large-text-color: #B24C61;
+    --login-small-text-color: #CD7675 ;
+    --login-selector-text-color: #494949;
+    --login-selector-bg-color: white;
+    --login-selector-hover-bg-color: #f1f1f1;
+    --login-buttons-gradient: linear-gradient(90deg, rgba(196,121,121,1) 0%, rgba(219,143,162,1) 100%);
+    --login-buttons-color: white;
+}
+
+.dark-theme {
+    --login-bg: linear-gradient(9deg, rgba(0,0,0,1) 0%, rgba(18,17,51,1) 100%);
+    --login-large-text-color: #959EBF;
+    --login-small-text-color: #EDEDF5;
+    --login-selector-text-color: #e0e0e0;
+    --login-selector-bg-color: #1e1e1e;
+    --login-selector-hover-bg-color: #333333;
+    --login-buttons-gradient: linear-gradient(90deg, rgba(75,90,119,1) 0%, rgba(37,51,83,1) 100%);
+    --login-buttons-color: white;
+}
+
 .login-main-container {
-    background-color: #1e1e1e;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,7 +29,7 @@
 }
 
 .login-container {
-    background-color: #f5dfe1;
+    background: var(--login-bg);
     display: flex;
     height: 80%;
     width: 80%;
@@ -25,16 +46,114 @@
 }
 
 .login-main h1 {
-    color: #B24C61;
+    color: var(--login-large-text-color);
     font-size: 80px;
 }
 
 .login-main h3 {
-    color: #CD7675;
+    color: var(--login-small-text-color);
     font-size: 40px;
     font-weight: 500;
 }
 
 .login-form-text {
     line-height: 1;
+    margin-bottom: 25px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.login-under-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.login-form-main {
+    width: 80%;
+}
+
+.login-form {
+    margin-bottom: 40px;
+}
+
+.login-form input {
+    border: none;
+    padding: 10px 15px;
+    width: 100%;
+    border-radius: 60px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    background-color: var(--login-selector-bg-color);
+    color: var(--login-selector-text-color);
+}
+
+.login-form input:hover {
+    background-color: var(--login-selector-hover-bg-color);
+}
+
+.login-form input:focus {
+    outline: none;
+}
+
+.login-under-form a, .checkbox-container {
+    text-decoration: none;
+    color: var(--login-small-text-color);
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--login-small-text-color); /* Цвет границы */
+    border-radius: 50%; /* Делаем круг */
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked + .custom-checkbox::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background-color: var(--login-small-text-color); /* Цвет заполнения */
+    border-radius: 50%; /* Делаем заполнение круглым */
+}
+
+.checkbox-container label {
+    display: flex;
+}
+
+.login-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.login-buttons button {
+    border: none;
+    padding: 10px 15px;
+    width: 100%;
+    border-radius: 60px;
+    font-size: 20px;
+    cursor: pointer;
+    background: var(--login-buttons-gradient);
+    color: var(--login-buttons-color);
+}
+
+.google-icon {
+    margin-left: 8px;
 }
