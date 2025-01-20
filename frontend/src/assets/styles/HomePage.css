@@ -11,6 +11,7 @@
     right: 0;
     border-radius: 0 0 0 100px;
     place-items: center;
+    user-select: none;
 }
 
 .image-text-l {
@@ -26,4 +27,34 @@
     transform-origin: center;
     white-space: nowrap;
     overflow-y: hidden;
+    user-select: none;
+}
+
+.homepage-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирует элементы по горизонтали */
+    width: 100%; /* Убедитесь, что элемент занимает всю ширину экрана */
+    position: relative;
+    text-align: left; /* Это выравнивание для всех потомков */
+}
+
+.homepage-text-h {
+    margin: 0;
+    padding: 0;
+    position: absolute; /* Абсолютное позиционирование для дочерних элементов */
+    left: 50%;
+    transform: translateX(-50%); /* Центрирование по горизонтали */
+}
+
+.first-text {
+    font-size: 100px;
+    color: #EC9A9C;
+    z-index: 0; /* Установите z-index, чтобы управлять порядком наложения элементов */
+}
+
+.second-text {
+    font-size: 150px;
+    color: #B24C61;
+    z-index: 1; /* Установите z-index, чтобы управлять порядком наложения элементов */
 }

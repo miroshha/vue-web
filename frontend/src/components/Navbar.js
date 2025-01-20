@@ -1,8 +1,15 @@
-import React from 'react';
-import '../assets/styles/Navbar.css'; // For styling
+import React, { useState } from 'react';
+import '../assets/styles/Navbar.css'; // Для стилей
 import '../../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 
 const Navbar = () => {
+    const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+    const toggleTheme = () => {
+        setIsDarkTheme(!isDarkTheme);
+        document.documentElement.classList.toggle('dark-theme', !isDarkTheme);
+    };
+
     return (
         <div className="navbar-container">
             <div className="navbar-links">
@@ -10,11 +17,14 @@ const Navbar = () => {
                 <a href="#"><i className="fa-regular fa-building"></i> For business</a>
             </div>
             <div className="navbar-buttons">
-                <button className="theme-button"><i className="fa-regular fa-moon"></i></button>
-                <button className="login-button"><i className="fa-regular fa-user"></i>
-            </button>
+                <button className="change-theme" onClick={toggleTheme}>
+                    <i className={`fa-regular ${isDarkTheme ? 'fa-sun' : 'fa-moon'}`}></i>
+                </button>
+                <button>
+                    <i className="fa-regular fa-user"></i>
+                </button>
+            </div>
         </div>
-</div>
     );
 };
 

@@ -1,3 +1,15 @@
+:root {
+    --text-color: #494949;
+    --bg-color: white;
+    --hover-bg-color: #f1f1f1;
+}
+
+.dark-theme {
+    --text-color: #e0e0e0;
+    --bg-color: #1e1e1e;
+    --hover-bg-color: #333333;
+}
+
 .navbar-container {
     text-align: center;
     font-size: 24px;
@@ -7,12 +19,18 @@
 }
 
 .navbar-links a {
-    color: #494949;
+    color: var(--text-color);
     text-decoration: none;
     margin-right: 25px;
-    background-color: white;
+    background-color: var(--bg-color);
     padding: 10px 15px;
     border-radius: 60px;
+    transition: 0.3s;
+}
+
+.navbar-links a:hover {
+    color: var(--text-color);
+    background-color: var(--hover-bg-color);
 }
 
 .navbar-links a i {
@@ -20,12 +38,22 @@
 }
 
 .navbar-buttons button {
-    color: #494949;
-    background-color: white;
+    color: var(--text-color);
+    background-color: var(--bg-color);
     border: 0;
     cursor: pointer;
     font-size: 24px;
     padding: 10px 15px;
     margin-right: 25px;
     border-radius: 60px;
+    transition: 0.3s;
+}
+
+.navbar-buttons button:hover {
+    background-color: var(--hover-bg-color);
+}
+
+.change-theme {
+    width: 55px;
+    height: 50px;
 }
