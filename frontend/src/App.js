@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
-import HomePage from './pages/HomePage.js';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+} from "react-router-dom";
+import Home from './pages/Home.js';
+import Login from './pages/Login.js';
 
 const App = () => {
-    const [theme, setTheme] = useState('light');
 
     const date = new Date()
     return (
-        <div className={`app-container ${theme}`}>
-            <HomePage time={date} />
-        </div>
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home time={date} />} />
+                <Route path="/login" element={ <Login /> } />
+            </Routes>
+        </Router>
     );
 };
 

@@ -1,3 +1,4 @@
+/* frontend/src/assets/styles/Footer.css */
 :root {
     --background: #f5dfe1;
     --header-color: #B24C61;
@@ -11,24 +12,22 @@
 }
 
 .footer-container {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 0;
-}
-
-.footer-content {
     background-color: var(--background);
-    display: flex;
-    justify-content: space-around;
+    width: 100%;
     padding: 10px 0;
 }
 
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+}
 
 .footer-content p {
     color: var(--header-color);
     font-size: 20px;
     font-weight: 500;
+    margin-bottom: 15px;
 }
 
 .footer-content a {

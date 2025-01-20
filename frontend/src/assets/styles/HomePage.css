@@ -100,14 +100,14 @@ body {
     align-items: center; /* Выравнивание иконок и текста по центру */
     gap: 10px; /* Отступ между иконкой и текстовым полем */
     background-color: var(--selector-bg-color); /* Фон кнопки */
-    border-radius: 20px; /* Скругленные края */
+    border-radius: 60px; /* Скругленные края */
     padding: 10px 15px; /* Внутренние отступы */
 }
 
 .homepage-buttons input {
     font-size: 1.2rem;
     border: none; /* Убирает границу у поля */
-    border-radius: 20px; /* Скругленные края */
+    border-radius: 60px; /* Скругленные края */
     color: var(--selector-text-color); /* Цвет текста */
     background-color: var(--selector-bg-color); /* Фон */
     flex: 1; /* Расширяет поле на доступное место */
@@ -130,12 +130,4 @@ body {
 .homepage-buttons input::placeholder {
     color: var(--selector-text-color); /* Цвет текста placeholder */
     font-weight: 400; /* Обычный шрифт для placeholder */
-}
-
-.middle-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 20vh;
-    width: 100%;
 }

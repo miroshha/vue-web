@@ -7,7 +7,7 @@ import Carousel from '../components/Carousel.js';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-const HomePage = ({ time }) => {
+const Home = ({ time }) => {
     const [selectedDate, setSelectedDate] = useState(time || null); // Состояние для выбранной даты
 
     // Обработчик изменения даты
@@ -33,7 +33,6 @@ const HomePage = ({ time }) => {
                     </div>
                     <div className="datetime">
                         <i className="fa-regular fa-calendar"></i>
-                        {/* Используем react-datepicker для выбора даты и времени */}
                         <DatePicker
                             selected={selectedDate}
                             onChange={handleDateChange}
@@ -57,4 +56,4 @@ const HomePage = ({ time }) => {
     );
 };
 
-export default HomePage;
+export default Home;

@@ -20,9 +20,9 @@ const Navbar = () => {
                 <button className="change-theme" onClick={toggleTheme}>
                     <i className={`fa-regular ${isDarkTheme ? 'fa-sun' : 'fa-moon'}`}></i>
                 </button>
-                <button>
+                <a href="/login">
                     <i className="fa-regular fa-user"></i>
-                </button>
+                </a>
             </div>
         </div>
     );
