@@ -1,9 +1,35 @@
-/*.container {*/
-/*    position: relative;*/
-/*    min-height: 100vh;*/
-/*}*/
 
-.homepage-image img {
+:root {
+    --header-color-l: #B24C61;
+    --header-color-s: #EC9A9C;
+    --l-text-color: #fad1de;
+    --main-image: url("https://i.imgur.com/yRV7OEq.png");
+    --background-gradient: linear-gradient(90deg, rgba(252,229,237,1) 0%, rgba(247,205,211,1) 35%, rgba(244,206,210,1) 68%, rgba(247,196,203,1) 100%);
+    --selector-text-color: #494949;
+    --selector-bg-color: white;
+    --selector-hover-bg-color: #f1f1f1;
+}
+
+.dark-theme {
+    --header-color-l: #959EBF;
+    --header-color-s: #EDEDF5;
+    --l-text-color: #5F6F91;
+    --main-image: url("https://i.imgur.com/yQtXLSs.png");
+    --background-gradient: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(24,33,55,1) 35%, rgba(10,10,10,1) 68%, rgba(44,28,69,1) 100%);
+    --selector-text-color: #e0e0e0;
+    --selector-bg-color: #1e1e1e;
+    --selector-hover-bg-color: #333333;
+}
+
+body {
+    background: var(--background);
+    background: var(--background-gradient);
+    transition: all 0.3s ease-in-out;
+}
+
+
+.homepage-image {
+    background-image: var(--main-image);
     width: 40%;
     height: 100%;
     position: absolute;
@@ -17,7 +43,7 @@
 .image-text-l {
     font-size: 300px;
     font-weight: 550;
-    color: #fad1de;
+    color: var(--l-text-color);
     margin: 0;
     padding: 0;
     position: absolute;
@@ -30,31 +56,86 @@
     user-select: none;
 }
 
-.homepage-text {
+.main-container {
     display: flex;
-    flex-direction: column;
-    align-items: center; /* Центрирует элементы по горизонтали */
-    width: 100%; /* Убедитесь, что элемент занимает всю ширину экрана */
-    position: relative;
-    text-align: left; /* Это выравнивание для всех потомков */
+    flex-direction: column; /* Вертикальное размещение дочерних элементов */
+    justify-content: center; /* Вертикальное выравнивание */
+    height: 80vh; /* Высота равна высоте окна браузера */
+    margin-left: 80px;
+}
+
+.homepage-text {
+    text-align: left; /* Выравнивание текста по центру */
+    line-height: 0.6; /* Управляет расстоянием между строками */
+    margin-bottom: 65px; /* Отступ снизу */
 }
 
 .homepage-text-h {
-    margin: 0;
-    padding: 0;
-    position: absolute; /* Абсолютное позиционирование для дочерних элементов */
-    left: 50%;
-    transform: translateX(-50%); /* Центрирование по горизонтали */
+    margin: 0; /* Уберите стандартные отступы у параграфов */
+    font-size: 2rem; /* Задайте нужный размер текста */
+    color: #d06f8e; /* Цвет текста */
 }
+
 
 .first-text {
     font-size: 100px;
-    color: #EC9A9C;
+    color: var(--header-color-s);
     z-index: 0; /* Установите z-index, чтобы управлять порядком наложения элементов */
 }
 
 .second-text {
     font-size: 150px;
-    color: #B24C61;
-    z-index: 1; /* Установите z-index, чтобы управлять порядком наложения элементов */
+    color: var(--header-color-l);
+    z-index: 1;
+    font-weight: 500;
+}
+
+.homepage-buttons {
+    display: flex;
+    gap: 15px; /* Расстояние между кнопками */
+}
+
+.homepage-buttons > div {
+    display: flex;
+    align-items: center; /* Выравнивание иконок и текста по центру */
+    gap: 10px; /* Отступ между иконкой и текстовым полем */
+    background-color: var(--selector-bg-color); /* Фон кнопки */
+    border-radius: 20px; /* Скругленные края */
+    padding: 10px 15px; /* Внутренние отступы */
+}
+
+.homepage-buttons input {
+    font-size: 1.2rem;
+    border: none; /* Убирает границу у поля */
+    border-radius: 20px; /* Скругленные края */
+    color: var(--selector-text-color); /* Цвет текста */
+    background-color: var(--selector-bg-color); /* Фон */
+    flex: 1; /* Расширяет поле на доступное место */
+    text-align: left; /* Выравнивание текста внутри поля */
+    outline: none; /* Убирает обводку при фокусе */
+}
+
+.homepage-buttons i {
+    font-size: 1.5rem; /* Размер иконки */
+    color: var(--selector-text-color); /* Цвет иконки */
+    display: flex; /* Для центрирования */
+    align-items: center; /* Горизонтальное центрирование */
+    justify-content: center; /* Вертикальное центрирование */
+    width: 40px; /* Ширина иконки */
+    height: 40px; /* Высота иконки */
+    background-color: var(--selector-bg-color); /* Фон иконки */
+    border-radius: 50%; /* Делаем иконку круглой */
+}
+
+.homepage-buttons input::placeholder {
+    color: var(--selector-text-color); /* Цвет текста placeholder */
+    font-weight: 400; /* Обычный шрифт для placeholder */
+}
+
+.middle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    width: 100%;
 }

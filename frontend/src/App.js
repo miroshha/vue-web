@@ -4,14 +4,10 @@ import HomePage from './pages/HomePage.js';
 const App = () => {
     const [theme, setTheme] = useState('light');
 
-    const toggleTheme = () => {
-        setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-        document.documentElement.classList.toggle('dark-theme', theme === 'light');
-    };
-
+    const date = new Date()
     return (
         <div className={`app-container ${theme}`}>
-            <HomePage toggleTheme={toggleTheme} />
+            <HomePage time={date} />
         </div>
     );
 };

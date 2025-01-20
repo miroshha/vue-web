@@ -1,10 +1,4 @@
 * {
     font-family: "Clash Grotesk Variable", sans-serif;
-}
-
-body {
-    background: rgb(252,229,237);
-    background: linear-gradient(90deg, rgba(252,229,237,1) 0%, rgba(247,205,211,1) 35%, rgba(244,206,210,1) 68%, rgba(247,196,203,1) 100%);
-    display: flex;
-    flex-direction: column;
+    transition: 0.3s;
 }
