@@ -1,13 +1,13 @@
 :root {
-    --provider-name: #B24C61;
-    --provider-description: #bb5c70;
-    --background: #F5E3E5;
+    --carousel-provider-name: #B24C61;
+    --carousel-provider-description: #bb5c70;
+    --carousel-background: #F5E3E5;
 }
 
 .dark-theme {
-    --provider-name: #EDEDF5;
-    --provider-description: #dbdbe7;
-    --background: #101627;
+    --carousel-provider-name: #EDEDF5;
+    --carousel-provider-description: #dbdbe7;
+    --carousel-background: #101627;
 }
 
 * {
@@ -39,7 +39,7 @@ img {
     height: 250px; /* Общая высота карточки */
     border-radius: 16px;
     overflow: hidden;
-    background-color: var(--background);
+    background-color: var(--carousel-background);
     margin-right: 20px;
     display: flex;
     flex-direction: column; /* Устанавливаем вертикальное деление */
@@ -64,14 +64,14 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Распределяем текст */
-    background-color: var(--background); /* Фон текста */
+    background-color: var(--carousel-background); /* Фон текста */
     overflow: hidden; /* Убираем переполнение текста */
 }
 
 .card-title {
     font-size: 18px;
     font-weight: 550;
-    color: var(--provider-name);
+    color: var(--carousel-provider-name);
     margin-bottom: 8px;
     white-space: nowrap; /* Текст в одну строку */
     overflow: hidden; /* Обрезаем текст */
@@ -80,7 +80,7 @@ img {
 
 .card-description {
     font-size: 14px;
-    color: var(--provider-description);
+    color: var(--carousel-provider-description);
     overflow: hidden;
     text-overflow: ellipsis; /* Троеточие для длинного текста */
     display: -webkit-box;
@@ -97,7 +97,7 @@ img {
 }
 
 .card-rating .rating {
-    color: var(--provider-name);
+    color: var(--carousel-provider-name);
     font-weight: bold;
     margin-right: 10px;
 }
@@ -151,6 +151,6 @@ img {
     font-weight: 500;
     padding: 3px 7px;
     border-radius: 60px;
-    color: var(--provider-name);
-    border: 1px solid var(--provider-name);
+    color: var(--carousel-provider-name);
+    border: 1px solid var(--carousel-provider-name);
 }

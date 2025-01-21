@@ -2,3 +2,17 @@
     font-family: "Clash Grotesk Variable", sans-serif;
     transition: 0.3s;
 }
+
+.large-text {
+    color: var(--home-l-text-color);
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    right: -11%;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: center;
+    white-space: nowrap;
+    overflow-y: hidden;
+    user-select: none;
+}

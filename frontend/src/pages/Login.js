@@ -40,9 +40,9 @@ const Login = () => {
                             </div>
                         </div>
                     </div>
-                    {/*<div className="login-image">*/}
-                    {/*    <h1 className="login-image-text login-image-text-l">Fiore®</h1>*/}
-                    {/*</div>*/}
+                    <div className="login-image">
+                        <h1 className="large-text login-image-text-l">Fiore®</h1>
+                    </div>
                 </div>
             </div>
             <Footer/>

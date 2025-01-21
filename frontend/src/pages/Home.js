@@ -20,7 +20,7 @@ const Home = ({ time }) => {
             <Navbar/>
             <div className="main-container">
                 <div className="homepage-image">
-                    <h1 className="image-text image-text-l">Fiore®</h1>
+                    <h1 className="large-text image-text-l">Fiore®</h1>
                 </div>
                 <div className="homepage-text">
                     <p className="homepage-text-h first-text">Beauty that's</p>

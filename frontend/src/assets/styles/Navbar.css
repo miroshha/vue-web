@@ -1,13 +1,13 @@
 :root {
-    --text-color: #494949;
-    --bg-color: white;
-    --hover-bg-color: #f1f1f1;
+    --navbar-text-color: #494949;
+    --navbar-bg-color: white;
+    --navbar-hover-bg-color: #f1f1f1;
 }
 
 .dark-theme {
-    --text-color: #e0e0e0;
-    --bg-color: #1e1e1e;
-    --hover-bg-color: #333333;
+    --navbar-text-color: #e0e0e0;
+    --navbar-bg-color: #1e1e1e;
+    --navbar-hover-bg-color: #333333;
 }
 
 .navbar-container {
@@ -19,17 +19,17 @@
 }
 
 .navbar-links a {
-    color: var(--text-color);
+    color: var(--navbar-text-color);
     text-decoration: none;
     margin-right: 25px;
-    background-color: var(--bg-color);
+    background-color: var(--navbar-bg-color);
     padding: 10px 15px;
     border-radius: 60px;
 }
 
 .navbar-links a:hover {
-    color: var(--text-color);
-    background-color: var(--hover-bg-color);
+    color: var(--navbar-text-color);
+    background-color: var(--navbar-hover-bg-color);
 }
 
 .navbar-links a i {
@@ -37,8 +37,8 @@
 }
 
 .navbar-buttons button, .navbar-buttons a {
-    color: var(--text-color);
-    background-color: var(--bg-color);
+    color: var(--navbar-text-color);
+    background-color: var(--navbar-bg-color);
     border: 0;
     cursor: pointer;
     font-size: 24px;
@@ -48,7 +48,7 @@
 }
 
 .navbar-buttons button:hover {
-    background-color: var(--hover-bg-color);
+    background-color: var(--navbar-hover-bg-color);
 }
 
 .change-theme {

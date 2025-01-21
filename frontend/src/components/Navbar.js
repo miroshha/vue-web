@@ -13,7 +13,7 @@ const Navbar = () => {
     return (
         <div className="navbar-container">
             <div className="navbar-links">
-                <a href="#"><i className="fa-solid fa-bars"></i> Menu</a>
+                <a href="/"><i className="fa-solid fa-bars"></i> Main</a>
                 <a href="#"><i className="fa-regular fa-building"></i> For business</a>
             </div>
             <div className="navbar-buttons">

@@ -33,8 +33,7 @@
     display: flex;
     height: 80%;
     width: 80%;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     padding: 50px;
     border-radius: 10px;
 }
@@ -156,4 +155,19 @@ input[type="checkbox"]:checked + .custom-checkbox::before {
 
 .google-icon {
     margin-left: 8px;
+}
+
+.login-image {
+    background-image: var(--home-main-image);
+    width: 40%;
+    height: 64%;
+    position: absolute;
+    right: 10%;
+    border-radius: 100px 10px 10px 100px;
+    place-items: center;
+    user-select: none;
+}
+
+.login-image-text-l {
+    font-size: 200px;
 }

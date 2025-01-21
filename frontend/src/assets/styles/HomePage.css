@@ -1,35 +1,34 @@
 
 :root {
-    --header-color-l: #B24C61;
-    --header-color-s: #EC9A9C;
-    --l-text-color: #fad1de;
-    --main-image: url("https://i.imgur.com/yRV7OEq.png");
-    --background-gradient: linear-gradient(90deg, rgba(252,229,237,1) 0%, rgba(247,205,211,1) 35%, rgba(244,206,210,1) 68%, rgba(247,196,203,1) 100%);
-    --selector-text-color: #494949;
-    --selector-bg-color: white;
-    --selector-hover-bg-color: #f1f1f1;
+    --home-header-color-l: #B24C61;
+    --home-header-color-s: #EC9A9C;
+    --home-l-text-color: #fad1de;
+    --home-main-image: url("https://i.imgur.com/yRV7OEq.png");
+    --home-background-gradient: linear-gradient(90deg, rgba(252,229,237,1) 0%, rgba(247,205,211,1) 35%, rgba(244,206,210,1) 68%, rgba(247,196,203,1) 100%);
+    --home-selector-text-color: #494949;
+    --home-selector-bg-color: white;
+    --home-selector-hover-bg-color: #f1f1f1;
 }
 
 .dark-theme {
-    --header-color-l: #959EBF;
-    --header-color-s: #EDEDF5;
-    --l-text-color: #5F6F91;
-    --main-image: url("https://i.imgur.com/yQtXLSs.png");
-    --background-gradient: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(24,33,55,1) 35%, rgba(10,10,10,1) 68%, rgba(44,28,69,1) 100%);
-    --selector-text-color: #e0e0e0;
-    --selector-bg-color: #1e1e1e;
-    --selector-hover-bg-color: #333333;
+    --home-header-color-l: #959EBF;
+    --home-header-color-s: #EDEDF5;
+    --home-l-text-color: #5F6F91;
+    --home-main-image: url("https://i.imgur.com/yQtXLSs.png");
+    --home-background-gradient: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(24,33,55,1) 35%, rgba(10,10,10,1) 68%, rgba(44,28,69,1) 100%);
+    --home-selector-text-color: #e0e0e0;
+    --home-selector-bg-color: #1e1e1e;
+    --home-selector-hover-bg-color: #333333;
 }
 
 body {
-    background: var(--background);
-    background: var(--background-gradient);
+    background: var(--home-background-gradient);
     transition: all 0.3s ease-in-out;
 }
 
 
 .homepage-image {
-    background-image: var(--main-image);
+    background-image: var(--home-main-image);
     width: 40%;
     height: 100%;
     position: absolute;
@@ -42,18 +41,6 @@ body {
 
 .image-text-l {
     font-size: 300px;
-    font-weight: 550;
-    color: var(--l-text-color);
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 50%;
-    right: -11%;
-    transform: translateY(-50%) rotate(-90deg);
-    transform-origin: center;
-    white-space: nowrap;
-    overflow-y: hidden;
-    user-select: none;
 }
 
 .main-container {
@@ -79,13 +66,13 @@ body {
 
 .first-text {
     font-size: 100px;
-    color: var(--header-color-s);
+    color: var(--home-header-color-s);
     z-index: 0; /* Установите z-index, чтобы управлять порядком наложения элементов */
 }
 
 .second-text {
     font-size: 150px;
-    color: var(--header-color-l);
+    color: var(--home-header-color-l);
     z-index: 1;
     font-weight: 500;
 }
@@ -99,7 +86,7 @@ body {
     display: flex;
     align-items: center; /* Выравнивание иконок и текста по центру */
     gap: 10px; /* Отступ между иконкой и текстовым полем */
-    background-color: var(--selector-bg-color); /* Фон кнопки */
+    background-color: var(--home-selector-bg-color); /* Фон кнопки */
     border-radius: 60px; /* Скругленные края */
     padding: 10px 15px; /* Внутренние отступы */
 }
@@ -108,8 +95,8 @@ body {
     font-size: 1.2rem;
     border: none; /* Убирает границу у поля */
     border-radius: 60px; /* Скругленные края */
-    color: var(--selector-text-color); /* Цвет текста */
-    background-color: var(--selector-bg-color); /* Фон */
+    color: var(--home-selector-text-color); /* Цвет текста */
+    background-color: var(--home-selector-bg-color); /* Фон */
     flex: 1; /* Расширяет поле на доступное место */
     text-align: left; /* Выравнивание текста внутри поля */
     outline: none; /* Убирает обводку при фокусе */
@@ -117,17 +104,17 @@ body {
 
 .homepage-buttons i {
     font-size: 1.5rem; /* Размер иконки */
-    color: var(--selector-text-color); /* Цвет иконки */
+    color: var(--home-selector-text-color); /* Цвет иконки */
     display: flex; /* Для центрирования */
     align-items: center; /* Горизонтальное центрирование */
     justify-content: center; /* Вертикальное центрирование */
     width: 40px; /* Ширина иконки */
     height: 40px; /* Высота иконки */
-    background-color: var(--selector-bg-color); /* Фон иконки */
+    background-color: var(--home-selector-bg-color); /* Фон иконки */
     border-radius: 50%; /* Делаем иконку круглой */
 }
 
 .homepage-buttons input::placeholder {
-    color: var(--selector-text-color); /* Цвет текста placeholder */
+    color: var(--home-selector-text-color); /* Цвет текста placeholder */
     font-weight: 400; /* Обычный шрифт для placeholder */
 }

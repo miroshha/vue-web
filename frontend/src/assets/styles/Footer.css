@@ -1,18 +1,18 @@
 /* frontend/src/assets/styles/Footer.css */
 :root {
-    --background: #f5dfe1;
-    --header-color: #B24C61;
-    --link-color: #494949;
+    --footer-background: #f5dfe1;
+    --footer-header-color: #B24C61;
+    --footer-link-color: #494949;
 }
 
 .dark-theme {
-    --background: #070B12;
-    --header-color: #959EBF;
-    --link-color: white;
+    --footer-background: #070B12;
+    --footer-header-color: #959EBF;
+    --footer-link-color: white;
 }
 
 .footer-container {
-    background-color: var(--background);
+    background-color: var(--footer-background);
     width: 100%;
     padding: 10px 0;
 }
@@ -24,14 +24,14 @@
 }
 
 .footer-content p {
-    color: var(--header-color);
+    color: var(--footer-header-color);
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 15px;
 }
 
 .footer-content a {
-    color: var(--link-color);
+    color: var(--footer-link-color);
     text-decoration: none;
     font-size: 20px;
     font-weight: 400;
@@ -39,7 +39,7 @@
 
 .footer-content li::before {
     content: "\2022";
-    color: var(--link-color);
+    color: var(--footer-link-color);
     display: inline-block;
     width: 1em;
     margin-left: -1em;
