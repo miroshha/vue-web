@@ -25,10 +25,10 @@ app.use(express.json());
 connectDb().then(r => r);
 
 // Routes
-app.use('/api', authentication) //token verification middleware
-
-app.use('/api/users', user);
 app.use('/api/auth', auth);
+
+app.use('/api', authentication) //token verification middleware
+app.use('/api/users', user);
 app.use('/api/category', category);
 app.use('/api/provider', provider);
 app.use('/api/service', service);

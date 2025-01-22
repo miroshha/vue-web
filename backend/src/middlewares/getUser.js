@@ -9,6 +9,11 @@ async function getUser(req, res, next) {
     } catch (err) {
         return res.status(500).json({ message: err.message });
     }
+
+    if (req.user.id !== req.params.id) {
+        return res.status(403).json({ message: 'Access denied: unauthorized to access this user\'s data' });
+    }
+
     res.user = user;
     next();
 }

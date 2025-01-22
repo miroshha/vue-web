@@ -3,7 +3,6 @@ import User from '../models/user/User.js';
 import bcrypt from 'bcryptjs';
 import getUser from '../middlewares/getUser.js'
 import LoginMiddleware from '../middlewares/Login.js'
-import authentication from '../middlewares/Authentication.js'
 
 const router = express.Router();
 

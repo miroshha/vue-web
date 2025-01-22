@@ -146,8 +146,8 @@ const Carousel = () => {
                     )}
                 </div>
                 <div className="nav">
-                    <button className="prev"><i className="fas fa-arrow-left fa-2x"></i></button>
-                    <button className="next"><i className="fas fa-arrow-right fa-2x"></i></button>
+                    <button className="prev"><i className="fa-solid fa-reply"></i></button>
+                    <button className="next"><i className="fa-solid fa-share"></i></button>
                 </div>
 
             </div>

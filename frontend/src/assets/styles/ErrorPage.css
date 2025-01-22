@@ -1,0 +1,48 @@
+:root {
+    --error-page-bg: #f5dfe1;
+    --error-page-small-text-color: #CD7675 ;
+}
+
+.dark-theme {
+    --error-page-bg: #070B12;
+    --error-page-small-text-color: #EDEDF5;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.error-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.error-content {
+    width: 20%;
+    max-width: 500px;
+    padding: 30px 20px;
+    border-radius: 10px;
+    background-color: var(--error-page-bg);
+}
+
+.error-title {
+    font-size: 2rem;
+    color: #ff4d4f;
+    margin-bottom: 7px;
+}
+
+.error-content i {
+    font-size: 5rem;
+    color: #ff4d4f;
+    margin-bottom: 25px;
+}
+
+.error-message {
+    font-size: 1.2rem;
+    color: var(--error-page-small-text-color);
+}

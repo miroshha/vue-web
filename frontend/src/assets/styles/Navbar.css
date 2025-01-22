@@ -1,10 +1,12 @@
 :root {
+    --navbar-header-color: #B24C61;
     --navbar-text-color: #494949;
     --navbar-bg-color: white;
     --navbar-hover-bg-color: #f1f1f1;
 }
 
 .dark-theme {
+    --navbar-header-color: #959EBF;
     --navbar-text-color: #e0e0e0;
     --navbar-bg-color: #1e1e1e;
     --navbar-hover-bg-color: #333333;
@@ -12,7 +14,7 @@
 
 .navbar-container {
     text-align: center;
-    font-size: 24px;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     margin: 20px 0 0 80px;
@@ -41,7 +43,7 @@
     background-color: var(--navbar-bg-color);
     border: 0;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 1.2rem;
     padding: 10px 15px;
     margin-right: 25px;
     border-radius: 60px;
@@ -52,6 +54,23 @@
 }
 
 .change-theme {
-    width: 55px;
-    height: 50px;
+    width: 47px;
+    height: 42px;
+}
+
+.dropdown-header {
+    padding: 5px 15px;
+    font-weight: 550 !important;
+    font-size: 1.1rem !important;
+    color: var(--navbar-header-color);
+    cursor: default;
+}
+
+.dropdown-menu {
+    margin-top: 10px;
+    margin-left: 56px !important;
+    background-color: var(--navbar-bg-color) !important;
+    color: var(--navbar-text-color) !important;
+    min-width: 160px;
+    z-index: 1;
 }
