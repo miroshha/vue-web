@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
 async function LoginMiddleware(req, res, next) {
-    const authHeader = req.header('Authorization');
+    const authHeader = req.header('User-Token');
     if (!authHeader) {
         return res.status(401).json({ message: 'Access denied, token required' });
     }

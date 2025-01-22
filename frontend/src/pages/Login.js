@@ -41,6 +41,7 @@ const Login = () => {
                 const { token, _id } = data;
                 localStorage.setItem('token', token);
                 localStorage.setItem('user_id', _id);
+
                 window.location.href = '/';
             } else {
                 setError(data.message)

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, MenuItem, Divider, Typography } from '@mui/material';
+import {Menu, MenuItem, Divider, Typography, Box} from '@mui/material';
 
 const DropdownMenu = ({ anchorEl, onOpen, onClose }) => {
 
@@ -25,10 +25,10 @@ const DropdownMenu = ({ anchorEl, onOpen, onClose }) => {
         >
             {
                 !localStorage.getItem('token') ? (
-                    <>
+                    <Box>
                         <MenuItem onClick={onLogin}>Log in</MenuItem>
                         <Divider />
-                    </>
+                    </Box>
                 ) : null
             }
             <Typography className={'dropdown-header'}>
@@ -39,10 +39,10 @@ const DropdownMenu = ({ anchorEl, onOpen, onClose }) => {
             <MenuItem onClick={onClose}>Customer support</MenuItem>
             {
                 localStorage.getItem('token') ? (
-                    <>
+                    <Box>
                         <Divider />
                         <MenuItem onClick={onLogout}>Logout</MenuItem>
-                    </>
+                    </Box>
                 ) : null
             }
         </Menu>

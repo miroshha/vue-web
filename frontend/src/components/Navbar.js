@@ -39,16 +39,17 @@ const Navbar = () => {
                 <a href="#"><i className="fa-regular fa-building"></i> For business</a>
             </div>
             <div className="navbar-buttons">
-                <button className="change-theme" onClick={toggleTheme}>
-                    <i className={`fa-regular ${isDarkTheme ? 'fa-sun' : 'fa-moon'}`}></i>
-                </button>
                 {
                     localStorage.getItem('token') ? (
                         <a href="/dashboard">
                             <i className="fa-regular fa-user"></i>
+                            Welcome back, {JSON.parse(localStorage.getItem('user')).name}
                         </a>
                     ) : null
                 }
+                <button className="change-theme" onClick={toggleTheme}>
+                    <i className={`fa-regular ${isDarkTheme ? 'fa-sun' : 'fa-moon'}`}></i>
+                </button>
             </div>
             <DropdownMenu
                 anchorEl={anchorEl}
