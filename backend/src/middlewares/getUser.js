@@ -21,14 +21,25 @@ async function getUser(req, res, next) {
     if (!token) {
         return res.status(401).json({ message: 'Access denied, token required' });
     }
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    if (decoded.id !== req.params.id) {
-        return res.status(403).json({ message: 'Access denied: unauthorized to access this user\'s data' });
+        if (decoded.id !== req.params.id) {
+            return res.status(403).json({ message: 'Access denied: unauthorized to access this user\'s data' });
+        }
+
+        res.user = user;
+        next();
+    } catch (e) {
+        if (e.name === 'TokenExpiredError') {
+            return res.status(401).json({ message: 'Token expired. Please log in again.' });
+        }
+        if (e.name === 'JsonWebTokenError') {
+            return res.status(401).json({ message: 'Invalid token' });
+        }
+        console.error('JWT Error:', e);
+        return res.status(500).json({ message: 'Internal server error' });
     }
-
-    res.user = user;
-    next();
 }
 
 export default getUser;
