@@ -40,6 +40,19 @@ const Login = () => {
             const data = await response.json()
             if (response.ok) {
                 const { token, _id } = data;
+                await fetch(`http://localhost:3001/api/users/${_id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer 123123`,
+                        'User-Token': `Bearer ${token}`
+                    }
+                }).then(async response => {
+                    const data = await response.json()
+                    localStorage.setItem('user', JSON.stringify(data))
+                }).catch(err => {
+                    console.error(err)
+                })
                 localStorage.setItem('token', token);
                 localStorage.setItem('user_id', _id);
                 window.location.href = '/';

@@ -5,6 +5,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    avatar: {
+        type: String,
+    },
+    isGoogleRegistered: {
+        type: Boolean,
+        default: false,
+    },
     email: {
         type: String,
         required: true,

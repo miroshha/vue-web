@@ -7,28 +7,6 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 const Dashboard = () => {
-
-    const fetchData = async () => {
-        const token = localStorage.getItem('token');
-        const id = localStorage.getItem('user_id');
-        await fetch(`http://localhost:3001/api/users/${id}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer 123123`,
-                'User-Token': `Bearer ${token}`
-            }
-        }).then(async response => {
-            const data = await response.json()
-            localStorage.setItem('user', JSON.stringify(data))
-        }).catch(err => {
-            console.error(err)
-        })
-    }
-    useEffect(() => {
-        fetchData();
-    }, []);
-
     return (
         <div className="container">
             <Navbar />

@@ -10,6 +10,11 @@ const Logout = () => {
         if (token) {
             localStorage.removeItem('token');
             setIsLoggedIn(false)
+            const theme = localStorage.getItem('theme');
+            localStorage.clear();
+            if (theme) {
+                localStorage.setItem('theme', theme);
+            }
             window.location.href = '/';
         }
     }, []);

@@ -26,4 +26,33 @@ router.post('/login', async (req, res) => {
     }
 });
 
+router.post('/register', async (req, res) => {
+    const { email, password, name } = req.body;
+    try {
+        const user = await User.findOne({ email: email });
+        if (user) {
+            return res.status(409).json({ message: 'User already exists' });
+        }
+
+        await fetch('http://localhost:3001/api/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer 123123'
+            },
+            body: JSON.stringify({ email, password, name }),
+        }).then(async response => {
+            const data = await response.json()
+            if (response.ok) {
+                const token = jwt.sign({ id: data._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
+                return res.json({ token, _id: data._id });
+            }
+        }).catch(e => {
+            return res.status(500).json({ message: e.message });
+        })
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
 export default router;

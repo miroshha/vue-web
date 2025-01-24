@@ -7,6 +7,10 @@ const DropdownMenu = ({ anchorEl, onOpen, onClose }) => {
         window.location.href = '/login';
     }
 
+    const onRegister = () => {
+        window.location.href = '/register';
+    }
+
     const onLogout = () => {
         window.location.href = '/logout';
     }
@@ -27,6 +31,7 @@ const DropdownMenu = ({ anchorEl, onOpen, onClose }) => {
                 !localStorage.getItem('token') ? (
                     <Box>
                         <MenuItem onClick={onLogin}>Log in</MenuItem>
+                        <MenuItem onClick={onRegister}>Register</MenuItem>
                         <Divider />
                     </Box>
                 ) : null

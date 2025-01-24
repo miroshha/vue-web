@@ -7,6 +7,7 @@ import {
 import Home from './pages/Home.js';
 import Login from './pages/Login.js';
 import Logout from "./pages/Logout";
+import Register from "./pages/Register";
 import {createTheme, ThemeProvider} from "@mui/material";
 import Dashboard from "./pages/Dashboard";
 
@@ -35,6 +36,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Home time={date} />} />
                     <Route path="/login" element={ <Login /> } />
+                    <Route path="/register" element={ <Register /> } />
                     <Route path="/logout" element={ <Logout /> } />
                     <Route path="/dashboard" element={ <Dashboard /> } />
                 </Routes>

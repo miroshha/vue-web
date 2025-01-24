@@ -1,0 +1,140 @@
+:root {
+    --register-bg: linear-gradient(9deg, rgba(247,205,211,1) 0%, rgba(245,223,225,1) 100%);
+    --register-large-text-color: #B24C61;
+    --register-small-text-color: #CD7675 ;
+    --register-selector-text-color: #494949;
+    --register-selector-bg-color: white;
+    --register-selector-hover-bg-color: #f1f1f1;
+    --register-buttons-gradient: linear-gradient(90deg, rgba(196,121,121,1) 0%, rgba(219,143,162,1) 100%);
+    --register-buttons-color: white;
+}
+
+.dark-theme {
+    --register-bg: linear-gradient(9deg, rgba(0,0,0,1) 0%, rgba(18,17,51,1) 100%);
+    --register-large-text-color: #959EBF;
+    --register-small-text-color: #EDEDF5;
+    --register-selector-text-color: #e0e0e0;
+    --register-selector-bg-color: #1e1e1e;
+    --register-selector-hover-bg-color: #333333;
+    --register-buttons-gradient: linear-gradient(90deg, rgba(75,90,119,1) 0%, rgba(37,51,83,1) 100%);
+    --register-buttons-color: white;
+}
+
+.register-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.register-container {
+    background: var(--register-bg);
+    display: flex;
+    height: 80%;
+    width: 80%;
+    align-items: center;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.register-main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.register-main h1 {
+    color: var(--register-large-text-color);
+    font-size: 80px;
+}
+
+.register-main h3 {
+    color: var(--register-small-text-color);
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.register-form-text {
+    line-height: 1;
+    margin-bottom: 25px;
+}
+
+
+.register-form-buttons {
+    margin-bottom: 20px;
+}
+
+.register-form input {
+    border: none;
+    padding: 10px 15px;
+    width: 100%;
+    border-radius: 60px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    background-color: var(--register-selector-bg-color);
+    color: var(--register-selector-text-color);
+}
+
+.register-form input:hover {
+    background-color: var(--register-selector-hover-bg-color);
+}
+
+.register-form input:focus {
+    outline: none;
+}
+
+.register-under-form a, .checkbox-container {
+    text-decoration: none;
+    color: var(--register-small-text-color);
+}
+
+.register-form {
+    width: 60%;
+}
+
+.register-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.register-buttons p {
+    color: var(--register-small-text-color);
+}
+
+.register-buttons button {
+    border: none;
+    padding: 10px 15px;
+    width: 100%;
+    border-radius: 60px;
+    font-size: 20px;
+    cursor: pointer;
+    background: var(--register-buttons-gradient);
+    color: var(--register-buttons-color);
+}
+
+.google-icon {
+    margin-left: 8px;
+}
+
+.register-image {
+    background-image: var(--home-main-image);
+    width: 35%;
+    height: 64%;
+    position: absolute;
+    right: 10%;
+    border-radius: 100px 10px 10px 100px;
+    place-items: center;
+    user-select: none;
+}
+
+.register-image-text-l {
+    font-size: 200px;
+}
+
+.error-register {
+    margin-top: 20px;
+    color: #e75c5c;
+}

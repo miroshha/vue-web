@@ -3,15 +3,15 @@ import '../assets/styles/Main.css';
 import '../assets/styles/Login.css';
 import Navbar from '../components/Navbar.js';
 import Footer from '../components/Footer.js';
+import '../assets/styles/Register.css'
 import "react-datepicker/dist/react-datepicker.css";
 import ErrorPage from "./Error";
-import Alert from '@mui/material/Alert';
 
-const Login = () => {
+const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
     const [error, setError] = useState('');
-    const [rememberMe, setRememberMe] = useState(false); // Состояние чекбокса
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Состояние чекбокса
 
     useEffect(() => {
@@ -25,21 +25,35 @@ const Login = () => {
         return <ErrorPage title="Error 405" message="You are already logged in"/>
     }
 
-    const handleLogin = async (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:3001/api/auth/login', {
+            const response = await fetch('http://localhost:3001/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer 123123'
                 },
-                body: JSON.stringify({ email, password, rememberMe }),
+                body: JSON.stringify({ email, password, name }),
             });
             const data = await response.json()
+            console.log(data)
             if (response.ok) {
                 const { token, _id } = data;
+                await fetch(`http://localhost:3001/api/users/${_id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer 123123`,
+                        'User-Token': `Bearer ${token}`
+                    }
+                }).then(async response => {
+                    const data = await response.json()
+                    localStorage.setItem('user', JSON.stringify(data))
+                }).catch(err => {
+                    console.error(err)
+                })
                 localStorage.setItem('token', token);
                 localStorage.setItem('user_id', _id);
                 window.location.href = '/';
@@ -55,16 +69,16 @@ const Login = () => {
     return (
         <div className="container">
             <Navbar/>
-            <div className="login-main-container">
-                <div className="login-container">
-                    <div className="login-main">
-                        <div className="login-form-text">
-                            <h1>Welcome back</h1>
-                            <h3>Please enter your account details</h3>
+            <div className="register-main-container">
+                <div className="register-container">
+                    <div className="register-main">
+                        <div className="register-form-text">
+                            <h1>Registration</h1>
+                            <h3>Please create your account</h3>
                         </div>
-                        <div className="login-form-main">
-                            <form className="login-form" onSubmit={handleLogin}>
-                                <div className="login-form-buttons">
+                        <div className="register-form-main">
+                            <form className="register-form" onSubmit={handleRegister}>
+                                <div className="register-form-buttons">
                                     <input
                                         type="email"
                                         placeholder="Email"
@@ -79,24 +93,17 @@ const Login = () => {
                                         onChange={(e) => setPassword(e.target.value)}
                                         required
                                     />
-                                    <div className="login-under-form">
-                                        <div className="checkbox-container">
-                                            <label>
-                                                <input
-                                                    type="checkbox"
-                                                    checked={rememberMe}
-                                                    onChange={(e) => setRememberMe(e.target.checked)}
-                                                />
-                                                <span className="custom-checkbox"></span>
-                                            </label>
-                                            <p>Remember me</p>
-                                        </div>
-                                        <a href="#">Forgot your password?</a>
-                                    </div>
+                                    <input
+                                        type="text"
+                                        placeholder="Name"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                        required
+                                    />
                                     {error && <p className="error-login">{error}</p>}
                                 </div>
-                                <div className="login-buttons">
-                                    <button type="submit">Login</button>
+                                <div className="register-buttons">
+                                    <button type="submit">Submit</button>
                                     <p>or</p>
                                     <button type="button">
                                         Registration via Google <i className="google-icon fa-brands fa-google"></i>
@@ -105,8 +112,8 @@ const Login = () => {
                             </form>
                         </div>
                     </div>
-                    <div className="login-image">
-                        <h1 className="large-text login-image-text-l">Fiore®</h1>
+                    <div className="register-image">
+                        <h1 className="large-text register-image-text-l">Fiore®</h1>
                     </div>
                 </div>
             </div>
@@ -115,4 +122,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
