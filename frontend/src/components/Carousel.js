@@ -110,38 +110,43 @@ const Carousel = () => {
                         <div>Загрузка...</div> // Сообщение, если данные еще не загружены
                     ) : (
                         cards.map((card, index) => (
-                            <div key={index} className="card">
-                                <div className="card-image-container">
-                                    <img src={card.image} alt="provider image"/>
-                                </div>
-                                <div className="card-content">
-                                    <div className="card-header">
-                                        <h3 className="card-title">{card.name}</h3>
-                                        {
-                                            categories.map((category) => {
-                                                if (category.id === card.category) {
-                                                    return <span key={category.id} className="category">{category.name}</span>;
-                                                }
-                                            })
-                                        }
+                            <a href={`/provider/${card._id}`} className="provider-link">
+                                <div key={index} className="card">
+                                    <div className="card-image-container">
+                                        <img src={card.logo} alt="provider image"/>
                                     </div>
-                                    <p className="card-description">{card.description}</p>
-                                    <div className="card-rating">
-                                        <span className="rating">{card.rating}</span>
-                                        <span className="star">
+                                    <div className="card-content">
+                                        <div className="card-header">
+                                            <h3 className="card-title">{card.name}</h3>
+                                            {
+                                                categories.map((category) => {
+                                                    if (category.id === card.category) {
+                                                        return <span key={category.id}
+                                                                     className="category">{category.name}</span>;
+                                                    }
+                                                })
+                                            }
+                                        </div>
+                                        <p className="card-description">{card.description}</p>
+                                        <div className="card-rating">
+                                            <span className="rating">{card.rating}</span>
+                                            <span className="star">
                                             {Array.from({length: 5}).map((_, index) => {
                                                 if (index < Math.floor(card.rating)) {
-                                                    return <i key={index} className="fa-solid fa-star rating-filled"></i>;
+                                                    return <i key={index}
+                                                              className="fa-solid fa-star rating-filled"></i>;
                                                 } else if (index === Math.floor(card.rating) && card.rating % 1 >= 0.5) {
-                                                    return <i key={index} className="fa-solid fa-star-half-stroke rating-half"></i>;
+                                                    return <i key={index}
+                                                              className="fa-solid fa-star-half-stroke rating-half"></i>;
                                                 } else {
                                                     return <i key={index} className="fa-regular fa-star"></i>;
                                                 }
                                             })}
                                         </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         ))
                     )}
                 </div>

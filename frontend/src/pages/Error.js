@@ -3,7 +3,6 @@ import '../assets/styles/Main.css';
 import '../assets/styles/ErrorPage.css';
 import Navbar from '../components/Navbar.js';
 import Footer from '../components/Footer.js';
-import "react-datepicker/dist/react-datepicker.css";
 
 const ErrorPage = ({ title = "Error", message = "Something went wrong" }) => {
     return (

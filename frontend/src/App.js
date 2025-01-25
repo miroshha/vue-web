@@ -10,6 +10,7 @@ import Logout from "./pages/Logout";
 import Register from "./pages/Register";
 import {createTheme, ThemeProvider} from "@mui/material";
 import Dashboard from "./pages/Dashboard";
+import ProviderPage from "./pages/Provider";
 
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
                     <Route path="/register" element={ <Register /> } />
                     <Route path="/logout" element={ <Logout /> } />
                     <Route path="/dashboard" element={ <Dashboard /> } />
+                    <Route path="/provider/:id" element={<ProviderPage />} />
                 </Routes>
             </Router>
         </ThemeProvider>

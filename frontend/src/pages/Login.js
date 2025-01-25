@@ -3,9 +3,7 @@ import '../assets/styles/Main.css';
 import '../assets/styles/Login.css';
 import Navbar from '../components/Navbar.js';
 import Footer from '../components/Footer.js';
-import "react-datepicker/dist/react-datepicker.css";
 import ErrorPage from "./Error";
-import Alert from '@mui/material/Alert';
 
 const Login = () => {
     const [email, setEmail] = useState('');

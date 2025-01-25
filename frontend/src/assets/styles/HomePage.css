@@ -23,7 +23,6 @@
 
 body {
     background: var(--home-background-gradient);
-    transition: all 0.3s ease-in-out;
 }
 
 

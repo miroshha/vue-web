@@ -48,7 +48,7 @@ const Navbar = () => {
                     ) : null
                 }
                 <button className="change-theme" onClick={toggleTheme}>
-                    <i className={`fa-regular ${isDarkTheme ? 'fa-sun' : 'fa-moon'}`}></i>
+                    <i className={`fa-regular ${localStorage.getItem('theme') === 'dark' ? 'fa-sun' : 'fa-moon'}`}></i>
                 </button>
             </div>
             <DropdownMenu

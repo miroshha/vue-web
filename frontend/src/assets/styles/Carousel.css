@@ -2,12 +2,14 @@
     --carousel-provider-name: #B24C61;
     --carousel-provider-description: #bb5c70;
     --carousel-background: #F5E3E5;
+    --carousel-background-hover: #efdee0;
 }
 
 .dark-theme {
     --carousel-provider-name: #EDEDF5;
     --carousel-provider-description: #dbdbe7;
     --carousel-background: #101627;
+    --carousel-background-hover: #131a2d;
 }
 
 * {
@@ -31,7 +33,6 @@ img {
 .track {
     display: inline-flex;
     height: 100%;
-    transition: transform 0.3s ease-in-out;
     align-items: center;
 }
 .card {
@@ -43,6 +44,10 @@ img {
     margin-right: 20px;
     display: flex;
     flex-direction: column; /* Устанавливаем вертикальное деление */
+}
+
+.card:hover > .card-content {
+    background-color: var(--carousel-background-hover);
 }
 
 .card-image-container {
@@ -76,6 +81,7 @@ img {
     white-space: nowrap; /* Текст в одну строку */
     overflow: hidden; /* Обрезаем текст */
     text-overflow: ellipsis; /* Добавляем троеточие */
+    max-width: 60%;
 }
 
 .card-description {
@@ -155,4 +161,8 @@ img {
     border-radius: 60px;
     color: var(--carousel-provider-name);
     border: 1px solid var(--carousel-provider-name);
+}
+
+.provider-link {
+    text-decoration: none;
 }

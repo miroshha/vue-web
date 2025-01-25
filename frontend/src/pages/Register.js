@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import '../assets/styles/Main.css';
-import '../assets/styles/Login.css';
 import Navbar from '../components/Navbar.js';
 import Footer from '../components/Footer.js';
 import '../assets/styles/Register.css'
-import "react-datepicker/dist/react-datepicker.css";
 import ErrorPage from "./Error";
 
 const Register = () => {

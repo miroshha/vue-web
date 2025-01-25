@@ -3,8 +3,6 @@ import '../assets/styles/Main.css';
 import '../assets/styles/Dashboard.css';
 import Navbar from '../components/Navbar.js';
 import Footer from '../components/Footer.js';
-import "react-datepicker/dist/react-datepicker.css";
-
 
 const Dashboard = () => {
     return (

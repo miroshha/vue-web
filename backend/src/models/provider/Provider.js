@@ -24,7 +24,10 @@ const providerSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    image: {
+    logo: {
+        type: String,
+    },
+    header_image: {
         type: String,
     },
     rating: {
@@ -48,7 +51,9 @@ const providerSchema = new mongoose.Schema({
         saturday: { open: String, close: String },
         sunday: { open: String, close: String },
     },
-
+    additional_information: {
+        type: [String],
+    }
 }, {
     timestamps: true,
 });

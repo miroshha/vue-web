@@ -15,7 +15,7 @@ const Logout = () => {
             if (theme) {
                 localStorage.setItem('theme', theme);
             }
-            window.location.href = '/';
+            window.location.href = document.referrer;
         }
     }, []);
 
