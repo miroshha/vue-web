@@ -38,7 +38,7 @@ router.post('/register', async (req, res) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer 123123'
+                'Authorization': `Bearer ${process.env.BACKEND_TOKEN}`
             },
             body: JSON.stringify({ email, password, name }),
         }).then(async response => {

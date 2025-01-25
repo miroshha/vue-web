@@ -1,4 +1,4 @@
-const token = '123123';
+const token = process.env.BACKEND_TOKEN
 
 const authentication = (req, res, next) =>{
     const authHeader = req.headers['authorization'];

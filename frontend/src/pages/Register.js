@@ -31,7 +31,7 @@ const Register = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer 123123'
+                    'Authorization': `Bearer ${process.env.BACKEND_TOKEN}`
                 },
                 body: JSON.stringify({ email, password, name }),
             });
@@ -43,7 +43,7 @@ const Register = () => {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer 123123`,
+                        'Authorization': `Bearer ${process.env.BACKEND_TOKEN}`,
                         'User-Token': `Bearer ${token}`
                     }
                 }).then(async response => {

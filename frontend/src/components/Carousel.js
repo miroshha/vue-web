@@ -13,7 +13,7 @@ const Carousel = () => {
                 const response = await fetch('http://localhost:3001/api/provider', {
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer 123123`
+                        'Authorization': `Bearer ${process.env.BACKEND_TOKEN}`
                     }
                 });
                 const data = await response.json();
@@ -32,7 +32,7 @@ const Carousel = () => {
                 const response = await fetch('http://localhost:3001/api/category', {
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer 123123`
+                        'Authorization': `Bearer ${process.env.BACKEND_TOKEN}`
                     }
                 });
                 const data = await response.json();

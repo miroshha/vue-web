@@ -67,7 +67,7 @@ const Provider = () => {
             const response = await fetch(`http://localhost:3001/api/provider/${id}`, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer 123123',
+                    'Authorization': `Bearer ${process.env.BACKEND_TOKEN}`,
                 },
             });
             const data = await response.json();
@@ -91,7 +91,7 @@ const Provider = () => {
             const response = await fetch(`http://localhost:3001/api/provider/${id}/services`, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer 123123'
+                    'Authorization': `Bearer ${process.env.BACKEND_TOKEN}`
                 }
             });
             const data = await response.json();

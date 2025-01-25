@@ -31,7 +31,7 @@ const Login = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer 123123'
+                    'Authorization': `Bearer ${process.env.BACKEND_TOKEN}`
                 },
                 body: JSON.stringify({ email, password, rememberMe }),
             });
@@ -42,7 +42,7 @@ const Login = () => {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer 123123`,
+                        'Authorization': `Bearer ${process.env.BACKEND_TOKEN}`,
                         'User-Token': `Bearer ${token}`
                     }
                 }).then(async response => {
