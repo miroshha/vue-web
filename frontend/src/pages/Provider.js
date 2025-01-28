@@ -4,7 +4,6 @@ import Navbar from '../components/Navbar.js';
 import Footer from '../components/Footer.js';
 import '../assets/styles/Provider.css';
 import { useParams } from "react-router-dom";
-
 const infoArray = {
     "Free Wi-Fi": '<i class="fa-solid fa-wifi"></i>',
     "Parking": '<i class="fa-solid fa-square-parking"></i>',
@@ -64,10 +63,10 @@ const Provider = () => {
 
         // Если данных нет или они устарели, выполняем запрос
         try {
-            const response = await fetch(`http://localhost:3001/api/provider/${id}`, {
+            const response = await fetch(`http://localhost:3030/api/provider/${id}`, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${process.env.BACKEND_TOKEN}`,
+                    'Authorization': `Bearer ${process.env.REACT_APP_BACKEND_TOKEN}`,
                 },
             });
             const data = await response.json();
@@ -88,15 +87,19 @@ const Provider = () => {
 
     const fetchService = async () => {
         try {
-            const response = await fetch(`http://localhost:3001/api/provider/${id}/services`, {
+            const response = await fetch(`http://localhost:3030/api/provider/${id}/services`, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${process.env.BACKEND_TOKEN}`
+                    'Authorization': `Bearer ${process.env.REACT_APP_BACKEND_TOKEN}`
                 }
             });
-            const data = await response.json();
-            setServices(data);
-            localStorage.setItem(`services_${id}`, JSON.stringify(data)); // Кэшируем данные
+            if (response.ok) {
+                const data = await response.json();
+                setServices(data);
+                localStorage.setItem(`services_${id}`, JSON.stringify(data)); // Кэшируем данные
+            } else {
+
+            }
         } catch (error) {
             console.error(error);
         } finally {
@@ -138,7 +141,6 @@ const Provider = () => {
                 const nextOpenTime = workingHours[nextDay].open;
                 const statusT =
                     `Closed. Opens on ${nextDay.charAt(0).toUpperCase() + nextDay.slice(1)} at ${nextOpenTime}`
-                console.log(statusT);
                 setStatus(statusT);
             }
         } else {
@@ -165,12 +167,27 @@ const Provider = () => {
             <div className="provider-main-container">
                 <div className="provider-main-info">
                     <h2 className="provider-name">{business.name}</h2>
-                    <img src={business.header_image} alt="provider-image"/>
+                    <div className="header-content">
+                        <img src={business.header_image} alt="provider-image"/>
+                        <div className="provider-reviews">
+                            <h3>Reviews</h3>
+                            <div className="reviews-container">
+                                <div className="review">
+                                    <div className="review-text">
+                                        <p className="review-text-name">John Doe</p>
+                                        <div className="rating"></div>
+                                        <p className="review-text-description">iausiqwueiquweiqwje qwejhqwiueyqwiueyiquwyeasjhd</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="middle-content">
                     <div className="provider-main-interaction">
                         <div className="provider-button">
-                            <a href={localStorage.getItem('token') ? `/booking/${business._id}` : '/login'} className="provider-to-book">Book now</a>
+                            <a href={localStorage.getItem('token') ? `/booking/${business._id}` : '/login'}
+                               className="provider-to-book">Book now</a>
                         </div>
                         <div className="provider-text">
                             <p className="provider-open-until">
@@ -189,7 +206,7 @@ const Provider = () => {
                                 <h3>Services</h3>
                                 {
                                     services && services.length === 0 ? (
-                                        <p>No services available</p>
+                                        <p className="services-error">No services available</p>
                                     ) : (
                                         services.map(s => (
                                             <div className="service-price-duration" key={s.id}>
@@ -214,7 +231,81 @@ const Provider = () => {
                                     )
                                 }
                             </div>
-
+                        </div>
+                        <div className="provider-container provider-about-us">
+                            <h3>About us</h3>
+                            <div className="about-us-container">
+                                <p className="about-us-description">{business.description}</p>
+                                <div className="map">
+                                    <iframe
+                                        className="map-iframe"
+                                        title="map"
+                                        src={`https://www.google.com/maps?q=${encodeURIComponent(business.location)}&output=embed`}
+                                        allowFullScreen=""
+                                        loading="lazy"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="provider-container provider-staff">
+                            <h3>Staff</h3>
+                            <div className="staff-container">
+                                <div className="staff">
+                                    <div className="staff-image">
+                                        <img
+                                            src="https://t4.ftcdn.net/jpg/02/24/86/95/360_F_224869519_aRaeLneqALfPNBzg0xxMZXghtvBXkfIA.jpg"
+                                            alt="staff"/>
+                                    </div>
+                                    <div className="staff-text">
+                                        <p className="staff-text-name">John Doe</p>
+                                        <p className="staff-text-description">Barber</p>
+                                    </div>
+                                </div>
+                                <div className="staff">
+                                    <div className="staff-image">
+                                        <img
+                                            src="https://t4.ftcdn.net/jpg/02/24/86/95/360_F_224869519_aRaeLneqALfPNBzg0xxMZXghtvBXkfIA.jpg"
+                                            alt="staff"/>
+                                    </div>
+                                    <div className="staff-text">
+                                        <p className="staff-text-name">John Doe</p>
+                                        <p className="staff-text-description">Barber</p>
+                                    </div>
+                                </div>
+                                <div className="staff">
+                                    <div className="staff-image">
+                                        <img
+                                            src="https://t4.ftcdn.net/jpg/02/24/86/95/360_F_224869519_aRaeLneqALfPNBzg0xxMZXghtvBXkfIA.jpg"
+                                            alt="staff"/>
+                                    </div>
+                                    <div className="staff-text">
+                                        <p className="staff-text-name">John Doe</p>
+                                        <p className="staff-text-description">Barber</p>
+                                    </div>
+                                </div>
+                                <div className="staff">
+                                    <div className="staff-image">
+                                        <img
+                                            src="https://t4.ftcdn.net/jpg/02/24/86/95/360_F_224869519_aRaeLneqALfPNBzg0xxMZXghtvBXkfIA.jpg"
+                                            alt="staff"/>
+                                    </div>
+                                    <div className="staff-text">
+                                        <p className="staff-text-name">John Doe</p>
+                                        <p className="staff-text-description">Barber</p>
+                                    </div>
+                                </div>
+                                <div className="staff">
+                                    <div className="staff-image">
+                                        <img
+                                            src="https://t4.ftcdn.net/jpg/02/24/86/95/360_F_224869519_aRaeLneqALfPNBzg0xxMZXghtvBXkfIA.jpg"
+                                            alt="staff"/>
+                                    </div>
+                                    <div className="staff-text">
+                                        <p className="staff-text-name">John Doe</p>
+                                        <p className="staff-text-description">Barber</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div className="provider-container provider-working-hours">
                             <div className="provider-working-hours-left">
@@ -223,7 +314,7 @@ const Provider = () => {
                                     {
                                         business?.workingHours &&
                                         Object.keys(business.workingHours).map((key, index) => {
-                                            const isToday = new Date().getDay() === index; // Проверяем, является ли текущий день
+                                            const isToday = new Date().getDay() === index - 6; // Проверяем, является ли текущий день
                                             const isClosed = business.workingHours[key].open == null || business.workingHours[key].close == null; // Проверяем, закрыто ли
 
                                             return (
@@ -251,7 +342,6 @@ const Provider = () => {
                             <div className="provider-add-info-right">
                                 <h3>Additional information</h3>
                                 <div className="add-info-container">
-                                    {console.log(business.additional_information)}
                                     {(!business?.additional_information || business.additional_information.length === 0) ? (
                                         <p>No additional information</p>
                                     ) : (
@@ -259,47 +349,13 @@ const Provider = () => {
                                             <div className="add-info-list" key={index}>
                                                 <span
                                                     dangerouslySetInnerHTML={{
-                                                        __html: infoArray[el] ? infoArray[el] : '<i class="fa-solid fa-plus"></i>',
+                                                        __html: infoArray[el] ? infoArray[el] : '<i class="fa-solid fa-list-ul"></i>',
                                                     }}
                                                 />
                                                 <p>{el}</p>
                                             </div>
                                         ))
                                     )}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="provider-container provider-staff">
-                            <h3>Staff</h3>
-                            <div className="staff-container">
-                                <div className="staff">
-                                    <img src="https://via.placeholder.com/150" alt="staff"/>
-                                    <p>John Doe</p>
-                                </div>
-                                <div className="staff">
-                                    <img src="https://via.placeholder.com/150" alt="staff"/>
-                                    <p>John Doe</p>
-                                </div>
-                                <div className="staff">
-                                    <img src="https://via.placeholder.com/150" alt="staff"/>
-                                    <p>John Doe</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="provider-container provider-about-us">
-                            <h3>About us</h3>
-                            <div className="about-us-container">
-                                <p>{business.description}</p>
-                                <div className="map">
-                                    <iframe
-                                        title="map"
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2028.633512263897!2d24.75802571606733!3d59.43740428166866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469294b2d4b3c0c3%3A0x1c5e2f5d8b4d8b6e!2sPriimula%20tee%209%2C%2013493%20Tallinn%2C%20Estonia!5e0!3m2!1sen!2sru!4v1633556964521!5m2!1sen!2sru"
-                                        width="600"
-                                        height="450"
-                                        style={{border: 0}}
-                                        allowFullScreen=""
-                                        loading="lazy"
-                                    />
                                 </div>
                             </div>
                         </div>

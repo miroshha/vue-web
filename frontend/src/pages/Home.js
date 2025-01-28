@@ -8,6 +8,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
 const Home = ({ time }) => {
+    console.log(process.env)
     const [selectedDate, setSelectedDate] = useState(time || null); // Состояние для выбранной даты
 
     // Обработчик изменения даты

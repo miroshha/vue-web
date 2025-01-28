@@ -27,11 +27,11 @@ const Register = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:3001/api/auth/register', {
+            const response = await fetch('http://localhost:3030/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${process.env.BACKEND_TOKEN}`
+                    'Authorization': `Bearer ${process.env.REACT_APP_BACKEND_TOKEN}`
                 },
                 body: JSON.stringify({ email, password, name }),
             });
@@ -39,11 +39,11 @@ const Register = () => {
             console.log(data)
             if (response.ok) {
                 const { token, _id } = data;
-                await fetch(`http://localhost:3001/api/users/${_id}`, {
+                await fetch(`http://localhost:3030/api/users/${_id}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${process.env.BACKEND_TOKEN}`,
+                        'Authorization': `Bearer ${process.env.REACT_APP_BACKEND_TOKEN}`,
                         'User-Token': `Bearer ${token}`
                     }
                 }).then(async response => {

@@ -1,5 +1,4 @@
-const token = process.env.BACKEND_TOKEN
-
+const token = process.env.REACT_APP_BACKEND_TOKEN
 const authentication = (req, res, next) =>{
     const authHeader = req.headers['authorization'];
     try {

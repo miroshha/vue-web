@@ -34,11 +34,11 @@ router.post('/register', async (req, res) => {
             return res.status(409).json({ message: 'User already exists' });
         }
 
-        await fetch('http://localhost:3001/api/users', {
+        await fetch('http://localhost:3030/api/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.BACKEND_TOKEN}`
+                'Authorization': `Bearer ${process.env.REACT_APP_BACKEND_TOKEN}`
             },
             body: JSON.stringify({ email, password, name }),
         }).then(async response => {

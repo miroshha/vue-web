@@ -9,6 +9,7 @@
     "@mui/material": "^6.4.1",
     "cra-template": "1.2.0",
     "font-awesome": "^4.7.0",
+    "path": "^0.12.7",
     "react": "^19.0.0",
     "react-datepicker": "^7.6.0",
     "react-dom": "^19.0.0",

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import "../assets/styles/Carousel.css"; // Подключаем стиль для карусели (если есть)
+import "../assets/styles/Carousel.css";
 
 const Carousel = () => {
     const [cards, setCards] = useState([]);
@@ -9,14 +9,17 @@ const Carousel = () => {
 
     useEffect(() => {
         const fetchCards = async () => {
+            console.log(__dirname+'/./../../.env')
+            console.log(process.env)
             try {
-                const response = await fetch('http://localhost:3001/api/provider', {
+                const response = await fetch('http://localhost:3030/api/provider', {
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${process.env.BACKEND_TOKEN}`
+                        'Authorization': `Bearer ${process.env.REACT_APP_BACKEND_TOKEN}`
                     }
                 });
                 const data = await response.json();
+                console.log(data)
                 setCards(data);  // Сохраняем полученные данные в состояние
             } catch (error) {
                 console.error('Ошибка при загрузке данных:', error);
@@ -29,10 +32,10 @@ const Carousel = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch('http://localhost:3001/api/category', {
+                const response = await fetch('http://localhost:3030/api/category', {
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${process.env.BACKEND_TOKEN}`
+                        'Authorization': `Bearer ${process.env.REACT_APP_BACKEND_TOKEN}`
                     }
                 });
                 const data = await response.json();
