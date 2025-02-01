@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
 });
 
 // Get user by id
-router.get('/:id', getUser, LoginMiddleware, (req, res) => {
+router.get('/:id', getUser, (req, res) => {
     res.json(res.user);
 });
 

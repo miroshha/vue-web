@@ -12,21 +12,7 @@ async function getUser(req, res, next) {
     } catch (err) {
         return res.status(500).json({ message: err.message });
     }
-
-    const authHeader = req.header('User-Token');
-    if (!authHeader) {
-        return res.status(401).json({ message: 'Access denied, token required' });
-    }
-    const token = authHeader.replace('Bearer ', '');
-    if (!token) {
-        return res.status(401).json({ message: 'Access denied, token required' });
-    }
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-        if (decoded.id !== req.params.id) {
-            return res.status(403).json({ message: 'Access denied: unauthorized to access this user\'s data' });
-        }
 
         res.user = user;
         next();

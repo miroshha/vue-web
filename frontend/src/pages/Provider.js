@@ -21,11 +21,13 @@ const Provider = () => {
     const [business, setBusiness] = useState(null);
     const [services, setServices] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [status, setStatus] = useState(""); // Состояние для текста о статусе
+    const [reviews, setReviews] = useState([]);
+    const [status, setStatus] = useState("");
 
     useEffect(() => {
         const cachedBusiness = localStorage.getItem(`business_${id}`);
         const cachedServices = localStorage.getItem(`services_${id}`);
+        const cachedReviews = localStorage.getItem(`reviews_${id}`);
 
         if (cachedBusiness) {
             const businessData = JSON.parse(cachedBusiness);
@@ -41,8 +43,14 @@ const Provider = () => {
             fetchService();
         }
 
-        if (cachedBusiness && cachedServices) {
-            setLoading(false); // Завершаем загрузку, если данные есть в localStorage
+        if (cachedReviews) {
+            setReviews(JSON.parse(cachedReviews));
+        } else {
+            fetchReviews();
+        }
+
+        if (cachedBusiness && cachedServices && cachedReviews) {
+            setLoading(false);
         }
     }, [id]);
 
@@ -104,6 +112,74 @@ const Provider = () => {
             console.error(error);
         } finally {
             setLoading(false);
+        }
+    };
+
+    const fetchUserName = async (userId) => {
+        try {
+            const response = await fetch(`http://localhost:3030/api/users/${userId}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${process.env.REACT_APP_BACKEND_TOKEN}`,
+                },
+            });
+            if (response.ok) {
+                const { name } = await response.json();
+                return name;
+            } else {
+                console.error(`Failed to fetch user name for userId: ${userId}`);
+                return "Unknown User";
+            }
+        } catch (error) {
+            console.error(`Error fetching user name for userId: ${userId}`, error);
+            return "Unknown User";
+        }
+    };
+
+    const fetchReviews = async () => {
+        const cacheLifetime = 1000 * 60 * 5; // Cache for 5 minutes
+        const cachedReviews = localStorage.getItem(`reviews_${id}`);
+
+        if (cachedReviews) {
+            const { data, timestamp } = JSON.parse(cachedReviews);
+
+            if (Date.now() - timestamp < cacheLifetime) {
+                setReviews(Array.isArray(data) ? data : []); // Ensure data is an array
+                return;
+            }
+        }
+
+        try {
+            const response = await fetch(`http://localhost:3030/api/review/provider/${id}?limit=5`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${process.env.REACT_APP_BACKEND_TOKEN}`,
+                },
+            });
+
+            if (response.ok) {
+                const reviewsData = await response.json();
+
+                // Fetch user names for each review
+                const reviewsWithUserNames = await Promise.all(
+                    reviewsData.map(async (review) => {
+                        const userName = await fetchUserName(review.userId);
+                        return { ...review, userName };
+                    })
+                );
+
+                setReviews(reviewsWithUserNames);
+                localStorage.setItem(
+                    `reviews_${id}`,
+                    JSON.stringify({ data: reviewsWithUserNames, timestamp: Date.now() })
+                );
+            } else {
+                console.error("Failed to fetch reviews");
+                setReviews([]); // Fallback to empty array
+            }
+        } catch (error) {
+            console.error("Error fetching reviews:", error);
+            setReviews([]); // Fallback to empty array
         }
     };
 
@@ -172,14 +248,34 @@ const Provider = () => {
                         <div className="provider-reviews">
                             <h3>Reviews</h3>
                             <div className="reviews-container">
-                                <div className="review">
-                                    <div className="review-text">
-                                        <p className="review-text-name">John Doe</p>
-                                        <div className="rating"></div>
-                                        <p className="review-text-description">iausiqwueiquweiqwje qwejhqwiueyqwiueyiquwyeasjhd</p>
-                                    </div>
-                                </div>
-                            </div>
+                                {Array.isArray(reviews.data) && reviews.data.length === 0 ? (
+                                    <p>No reviews available</p>
+                                ) : (
+                                    reviews.data.map((review) => (
+                                        <div className="review" key={review._id}>
+                                            <div className="review-text">
+                                                <div className="review-name-cont">
+                                                    <p className="review-text-name">{review.userName}</p>
+                                                    <div className="review-rating">
+                                                    <span className="review-star">
+                                                        {Array.from({ length: 5 }).map((_, index) => {
+                                                            if (index < Math.floor(review.rating)) {
+                                                                return <i key={index} className="fa-solid fa-star rating-filled"></i>;
+                                                            } else if (index === Math.floor(review.rating) && review.rating % 1 >= 0.5) {
+                                                                return <i key={index} className="fa-solid fa-star-half-stroke rating-half"></i>;
+                                                            } else {
+                                                                return <i key={index} className="fa-regular fa-star"></i>;
+                                                            }
+                                                        })}
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                                <p className="review-text-description">{review.description}</p>
+                                            </div>
+                                        </div>
+                                    ))
+                                )}
+                            </div>;
                         </div>
                     </div>
                 </div>

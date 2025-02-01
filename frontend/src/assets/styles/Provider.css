@@ -324,3 +324,20 @@ iframe.map-iframe {
     border-radius: 15px;
     height: 80%;
 }
+
+.review-name-cont {
+    display: flex;
+    gap: 10px;
+    align-content: center;
+    margin-bottom: 7px;
+}
+
+.review {
+    margin-bottom: 20px;
+    color: var(--provider-service-text);
+}
+
+.review-star {
+    font-size: 15px;
+    color: #f39c12;
+}

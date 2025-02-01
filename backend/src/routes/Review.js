@@ -13,6 +13,20 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Get Reviews by providerId with limit
+router.get('/provider/:providerId', async (req, res) => {
+    const { providerId } = req.params;
+    const { limit } = req.query;
+
+    try {
+        const reviews = await Review.find({ providerId })
+            .limit(Number(limit) || 0); // Apply limit if provided
+        res.status(200).json(reviews);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
 // Create new Review
 router.post('/', async (req, res) => {
     const { userId, providerId, serviceId, rating, description } = req.body;
@@ -28,7 +42,7 @@ router.post('/', async (req, res) => {
 // Delete Review
 router.delete('/:id', getReview, async (req, res) => {
     try {
-        await Review.deleteOne({ _id: res.review._id });
+        await Review.deleteOne({ _id: res.Review._id });
         res.json({ message: 'Review deleted' });
     } catch (err) {
         res.status(500).json({ message: err.message });
